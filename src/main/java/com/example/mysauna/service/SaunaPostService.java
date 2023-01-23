@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.mysauna.dao.SaunaPostMapper;
 import com.example.mysauna.dto.SaunaPostAddRequest;
+import com.example.mysauna.dto.SaunaPostUpdateRequest;
 import com.example.mysauna.entity.SaunaPost;
 
 @Service
@@ -19,7 +20,15 @@ public class SaunaPostService {
     return saunaPostMapper.findAll();
   }
 
+  public SaunaPost findById(Long id) {
+    return saunaPostMapper.findById(id);
+  }
+
   public void save(SaunaPostAddRequest saunaPostAddRequest) {
     saunaPostMapper.save(saunaPostAddRequest);
+  }
+
+  public void update(SaunaPostUpdateRequest saunaPostUpdateRequest) {
+    saunaPostMapper.update(saunaPostUpdateRequest);
   }
 }

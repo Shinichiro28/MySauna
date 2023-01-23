@@ -7,10 +7,16 @@
   <select id="findAll" resultType="com.example.mysauna.entity.SaunaPost">
     SELECT * FROM saunaPost
   </select>
+  <select id="findById" resultType="com.example.mysauna.entity.SaunaPost">
+    SELECT * FROM saunaPost WHERE id=#{id}
+  </select>
   <insert id="save">
     INSERT INTO saunaPost
-        (id, name, sauna_temp, sauna_time, sauna_satisfaction, water_temp, water_time, water_satisfaction, created_at)
+        (name, sauna_temp, sauna_time, sauna_satisfaction, water_temp, water_time, water_satisfaction, created_at)
     VALUES
-        (#{id}, #{name}, #{sauna_temp}, #{sauna_time}, #{sauna_satisfaction}, #{water_temp}, #{water_time}, #{water_satisfaction}, #{created_at})
+        (#{name}, #{sauna_temp}, #{sauna_time}, #{sauna_satisfaction}, #{water_temp}, #{water_time}, #{water_satisfaction}, #{created_at})
   </insert>
+  <update id="update">
+    UPDATE saunaPost SET name = #{name}, sauna_temp = #{sauna_temp}, sauna_time = #{sauna_time}, sauna_satisfaction = #{sauna_satisfaction}, water_temp = #{water_temp}, water_time = #{water_time}, water_satisfaction = #{water_satisfaction} WHERE id = #{id}
+  </update>
 </mapper>

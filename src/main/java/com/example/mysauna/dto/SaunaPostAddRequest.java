@@ -11,7 +11,6 @@ import lombok.Data;
 @Data
 public class SaunaPostAddRequest implements Serializable {
 
-  private Integer id;
   @NotEmpty(message = "施設名を入れてください")
   private String name;
 
