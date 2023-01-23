@@ -19,4 +19,8 @@
   <update id="update">
     UPDATE saunaPost SET name = #{name}, sauna_temp = #{sauna_temp}, sauna_time = #{sauna_time}, sauna_satisfaction = #{sauna_satisfaction}, water_temp = #{water_temp}, water_time = #{water_time}, water_satisfaction = #{water_satisfaction} WHERE id = #{id}
   </update>
+
+  <delete id="delete">
+    DELETE FROM saunaPost WHERE id = #{id}
+  </delete>
 </mapper>

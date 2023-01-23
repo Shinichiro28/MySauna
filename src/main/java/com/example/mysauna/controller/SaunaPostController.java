@@ -92,4 +92,11 @@ public class SaunaPostController {
     saunaPostService.update(saunaPostUpdateRequest);
     return "redirect:/saunaPost/index";
   }
+
+  // 削除する
+  @GetMapping("/saunaPost/{id}/delete")
+  public String delete(@PathVariable Long id, Model model) {
+    saunaPostService.delete(id);
+    return "redirect:/saunaPost/index";
+  }
 }

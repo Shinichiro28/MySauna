@@ -17,4 +17,6 @@ public interface SaunaPostMapper {
   void save(SaunaPostAddRequest saunaPostAddRequest);
 
   void update(SaunaPostUpdateRequest saunaPostUpdateRequest);
+
+  void delete(Long id);
 }

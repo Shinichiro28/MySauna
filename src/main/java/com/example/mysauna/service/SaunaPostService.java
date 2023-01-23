@@ -31,4 +31,8 @@ public class SaunaPostService {
   public void update(SaunaPostUpdateRequest saunaPostUpdateRequest) {
     saunaPostMapper.update(saunaPostUpdateRequest);
   }
+
+  public void delete(Long id) {
+    saunaPostMapper.delete(id);
+  }
 }
