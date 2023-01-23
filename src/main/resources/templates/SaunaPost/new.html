@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Motivation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>何を集中しましたか？</h1>
+    <form th:action="@{/saunaPost/create}" th:object="${saunaPostAddRequest}" th:method="post">
+        <div class="form-group">
+            <label>施設名：<span class="text-danger">※</span></label>
+            <input type="text" th:field="*{name}" class="form-control" placeholder="ピアノ">
+        </div>
+        <div class="form-group">
+            <label>サウナ温度：</label>
+            <input type="number" th:field="*{sauna_temp}" class="form-control">分
+        </div>
+        <div class="form-group">
+          <label>サウナ回数：</label>
+          <input type="number" th:field="*{sauna_time}" class="form-control">回
+      </div>
+        <div class="form-group">
+            <label>サウナ満足度：</label>
+            <input type="text" th:field="*{sauna_satisfaction}" class="form-control">％
+        </div>
+
+        <div class="form-group">
+          <label>水風呂温度：</label>
+          <input type="number" th:field="*{water_temp}" class="form-control">分
+      </div>
+      <div class="form-group">
+        <label>水風呂回数：</label>
+        <input type="number" th:field="*{water_time}" class="form-control">回
+    </div>
+      <div class="form-group">
+          <label>水風呂満足度：</label>
+          <input type="text" th:field="*{water_satisfaction}" class="form-control">％
+      </div>
+        <br />
+        <div class="text-center">
+            <input type="submit" value="登録" class="btn btn-primary">
+            <a href="/saunaPost/index" class="btn btn-secondary">キャンセル</a>
+        </div>
+    </form>
+  </body>
+</html>
