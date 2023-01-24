@@ -14,6 +14,10 @@ public interface SaunaMapper {
 
   Sauna findById(Long id);
 
+  Sauna findBySaunaTemp(Integer sauna_temp);
+
+  Sauna findBySaunaSatisfaction(Double sauna_satisfaction);
+
   void save(SaunaAddRequest saunaAddRequest);
 
   void update(SaunaUpdateRequest saunaUpdateRequest);
