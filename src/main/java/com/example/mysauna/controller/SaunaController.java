@@ -36,6 +36,14 @@ public class SaunaController {
     return "sauna/index";
   }
 
+  // グラフ
+  @GetMapping(value = "/sauna/graph")
+  public String graph(Model model) {
+    List<Sauna> saunaList = saunaService.findAll();
+    model.addAttribute("saunalist", saunaList);
+    return "sauna/graph";
+  }
+
   // 登録画面を表示
   @GetMapping(value = "sauna/new")
   public String displayAdd(Model model) {
