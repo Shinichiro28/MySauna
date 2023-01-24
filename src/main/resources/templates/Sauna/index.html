@@ -5,14 +5,18 @@
     <title>Sauna</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <link th:href="@{/css/graph.css}" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
   </head>
   <body>
     <div class="container">
+      <!-- 一覧画面 -->
       <h1>サ活内容一覧</h1>
       <div class="float-end">
           <a th:href="@{/sauna/new}" class="btn btn-primary">登録はこちら</a>
       </div>
+      <form th:action="@{/user/logout}" method="post" class="btn btn-link">
+        <button class="btn btn-outline-dark">ログアウト</button>
+      </form>
       <div th:if="${saunalist}">
         <table class="table table-striped">
           <thead>
@@ -40,7 +44,6 @@
           </tbody>
         </table>
       </div>
-      
     </div>
   </body>
 </html>

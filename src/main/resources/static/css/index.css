@@ -1,0 +1,29 @@
+/* モーダル画面 */
+/* 
+.c-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-overlay__inner {
+  box-sizing: border-box;
+  position: absolute;
+  max-width: 640px;
+  width: 100%;
+  padding: 24px 24px;
+  background-color: #fff;
+}*/
+
+/* モダール画面をとじる */
+/* 
+.c-overlay.is-closed {
+  display: none;
+}
+*/
