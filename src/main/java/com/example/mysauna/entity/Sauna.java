@@ -5,7 +5,7 @@ import java.time.DateTimeException;
 import lombok.Data;
 
 @Data
-public class SaunaPost {
+public class Sauna {
 
   // id
   private Long id;

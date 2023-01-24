@@ -9,9 +9,9 @@
     <div class="container">
       <h1>サ活内容一覧</h1>
       <div class="float-end">
-          <a th:href="@{/saunaPost/new}" class="btn btn-primary">登録はこちら</a>
+          <a th:href="@{/sauna/new}" class="btn btn-primary">登録はこちら</a>
       </div>
-      <div th:if="${saunapostlist}">
+      <div th:if="${saunalist}">
         <table class="table table-striped">
           <thead>
             <tr>
@@ -24,15 +24,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr th:each="saunaPost : ${saunapostlist}" th:object="${sanaPost}" class="align-middle">
+            <tr th:each="sauna : ${saunalist}" th:object="${sauna}" class="align-middle">
               <td th:text="*{name}"></td>
               <td th:text="*{sauna_temp}"></td>
               <td th:text="*{sauna_satisfaction}"></td>
               <td th:text="*{water_temp}"></td>
               <td th:text="*{water_satisfaction}"></td>
               <td>
-                  <a th:href="@{/saunaPost/{id}/edit(id=*{id})}" class="btn btn-primary">編集</a>
-                  <a th:href="@{/saunaPost/{id}/delete(id=*{id})}" class="btn btn-secondary">削除</a>
+                  <a th:href="@{/sauna/{id}/edit(id=*{id})}" class="btn btn-primary">編集</a>
+                  <a th:href="@{/sauna/{id}/delete(id=*{id})}" class="btn btn-secondary">削除</a>
               </td>
             </tr>
           </tbody>

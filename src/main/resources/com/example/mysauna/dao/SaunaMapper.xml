@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mysauna.dao.SaunaMapper">
+
+  <select id="findAll" resultType="com.example.mysauna.entity.Sauna">
+    SELECT * FROM sauna
+  </select>
+  <select id="findById" resultType="com.example.mysauna.entity.Sauna">
+    SELECT * FROM sauna WHERE id=#{id}
+  </select>
+  <insert id="save">
+    INSERT INTO sauna
+        (name, sauna_temp, sauna_time, sauna_satisfaction, water_temp, water_time, water_satisfaction, created_at)
+    VALUES
+        (#{name}, #{sauna_temp}, #{sauna_time}, #{sauna_satisfaction}, #{water_temp}, #{water_time}, #{water_satisfaction}, CURRENT_TIMESTAMP)
+  </insert>
+  <update id="update">
+    UPDATE sauna SET name = #{name}, sauna_temp = #{sauna_temp}, sauna_time = #{sauna_time}, sauna_satisfaction = #{sauna_satisfaction}, water_temp = #{water_temp}, water_time = #{water_time}, water_satisfaction = #{water_satisfaction} WHERE id = #{id}
+  </update>
+
+  <delete id="delete">
+    DELETE FROM sauna WHERE id = #{id}
+  </delete>
+</mapper>

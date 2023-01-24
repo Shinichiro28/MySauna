@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 
-public class SaunaPostUpdateRequest extends SaunaPostAddRequest implements Serializable {
+public class SaunaUpdateRequest extends SaunaAddRequest implements Serializable {
   @NotNull
   private Long id;
 }
