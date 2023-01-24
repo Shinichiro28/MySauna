@@ -11,8 +11,7 @@
         <label class="text-danger" th:text="${error}"></label>
       </div>
       <h1>編集</h1>
-      <form th:action="@{/sauna/update}" th:object="${saunaUpdateRequest}"
-        th:method="post">
+      <form th:action="@{/sauna/update}" th:object="${saunaUpdateRequest}" th:method="post">
         <input type="hidden" th:field="*{id}" />
         <div>
           <div class="row mx-md-n5">

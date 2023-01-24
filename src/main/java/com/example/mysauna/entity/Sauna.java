@@ -10,9 +10,6 @@ public class Sauna {
   // id
   private Long id;
 
-  // ユーザid
-  private Integer userId;
-
   // 施設名
   private String name;
 
