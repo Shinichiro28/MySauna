@@ -14,22 +14,22 @@ public class Sauna {
   private String name;
 
   // サウナ室温度
-  public Integer sauna_temp;
+  public Integer saunaTemp;
 
   // サウナに入った回数
-  private Integer sauna_time;
+  private Integer saunaTime;
 
   // サウナの満足度
-  public Integer sauna_satisfaction;
+  public Integer saunaSatisfaction;
 
   // 水風呂温度
-  public Integer water_temp;
+  public Integer waterTemp;
 
   // 水風呂に入った回数
-  private Integer water_time;
+  private Integer waterTime;
 
   // 水風呂の満足度
-  public Integer water_satisfaction;
+  public Integer waterSatisfaction;
 
-  private DateTimeException created_at;
+  private DateTimeException createdAt;
 }

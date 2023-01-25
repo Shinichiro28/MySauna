@@ -14,5 +14,5 @@ CREATE TABLE IF NOT EXISTS sauna(
 CREATE TABLE IF NOT EXISTS users(
   id SERIAL PRIMARY KEY,
   username VARCHAR(20),
-  password VARCHAR(10)
+  password VARCHAR(60)
 );

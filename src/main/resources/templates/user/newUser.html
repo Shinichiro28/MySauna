@@ -8,26 +8,25 @@
   </head>
   <body>
     <div class="main">
+      <h1 class="form_title">ユーザー登録</h1>
       <form class="form" th:action="@{/user/new}" method="post" th:object="${form}">
-        <h1 class="form__title">ユーザー登録</h1>
         <p th:if="${#fields.hasErrors('passwordValid')}" th:errors="*{passwordValid}" class="error-message"></p>
-
-        <p class="form__item">
-          <label for="username">ニックネーム</label>
+        <p class="form_item">
+          <label for="username">名前</label>
           <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error-message"></span>
           <input type="text" name="username" id="username">
         </p>
-        <p class="form__item">
+        <p class="form_item">
           <label for="password">パスワード</label>
           <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-message"></span>
-          <input type="password" name="password" id="password">
+          <input type="password" name="password" id="password" placeholder="8文字以上12文字以下">
         </p>
-        <p class="form__item">
+        <p class="form_item">
           <label for="confirm-password">パスワード(確認)</label>
           <span th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="error-message"></span>
           <input type="password" name="confirmPassword" id="confirm-password">
         </p>
-        <p class="form__item">
+        <p class="form_item">
           <input type="submit" class="btn btn-outline-success" value="登録">
         </p>
         <a href="/user/login" class="btn btn-info">ログインはこちら</a>

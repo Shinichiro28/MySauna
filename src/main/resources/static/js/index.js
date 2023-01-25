@@ -1,18 +1,18 @@
 const { Chart } = require("chart.js");
 
 const saunalist = /*[[${saunalist}]]*/"saunalist";
-const sauna_satisfaction = saunalist.map(x=>x.sauna_satisfaction);
+const saunaSatisfaction = saunalist.map(x=>x.saunaSatisfaction);
 
 let saunaTempArray = [];
-const sauna_temp = saunalist.map(x=>x.sauna_temp);
+const saunaTemp = saunalist.map(x=>x.saunaTemp);
 
-for(var i = 0; i < sauna_temp.length; i++){
-  saunaTempArray/push(sauna_temp[i]);
+for(var i = 0; i < saunaTemp.length; i++){
+  saunaTempArray/push(saunaTemp[i]);
 }
 
 let saunaSatisfactionArray = [];
-for(var i = 0; i < sauna_satisfaction.length; i++){
-  saunaSatisfactionArray.push(sauna_satisfaction[i]);
+for(var i = 0; i < saunaSatisfaction.length; i++){
+  saunaSatisfactionArray.push(saunaSatisfaction[i]);
 }
 
 var ctx = document.getElementById("LineChart").getContext('2d');

@@ -19,12 +19,12 @@ public class UserController {
   public UserNewService userNewService;
 
   // ユーザ登録
-  @GetMapping("user/new")
+  @GetMapping("/user/new")
   public String userNew(@ModelAttribute("form") UserNewForm form) {
     return "user/newUser";
   }
 
-  @PostMapping("user/new")
+  @PostMapping("/user/new")
   public String userRegistration(@Valid @ModelAttribute("form") UserNewForm form, BindingResult result) {
     if (result.hasErrors()) {
       return "user/newUser";

@@ -26,12 +26,12 @@ public class SaunaService {
     return saunaMapper.findById(id);
   }
 
-  public Sauna findBySaunaTemp(Integer sauna_temp){
-    return saunaMapper.findBySaunaTemp(sauna_temp);
+  public Sauna findBySaunaTemp(Integer saunaTemp) {
+    return saunaMapper.findBySaunaTemp(saunaTemp);
   }
-  
-  public Sauna findBySatisfaction(Double sauna_satisfaction){
-    return saunaMapper.findBySaunaSatisfaction(sauna_satisfaction);
+
+  public Sauna findBySatisfaction(Double saunaSatisfaction) {
+    return saunaMapper.findBySaunaSatisfaction(saunaSatisfaction);
   }
 
   public void save(SaunaAddRequest saunaAddRequest) {
@@ -46,7 +46,7 @@ public class SaunaService {
     saunaMapper.delete(id);
   }
 
-  public List<Sauna> findBysauna(Map<String, String> sauna_satisfaction, Sort sort){
+  public List<Sauna> findBysauna(Map<String, String> saunaSatisfaction, Sort sort) {
     return null;
   }
 }

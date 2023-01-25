@@ -1,11 +1,10 @@
 /*------ base ------*/
-
 body{
 	font-size: 20px;
 }
 
 *{
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 a{
@@ -14,9 +13,7 @@ a{
 
 input{
 	margin: 0;
-	outline: none;
-	border: none;
-    font-size: 20px;
+  font-size: 20px;
 }
 
 input[type="submit"]{
@@ -34,40 +31,39 @@ input[type="submit"]{
 .main img{
   width:40%;
   height:auto;
-
 }
 
 /*------ form ------*/
 
-.form__title{
-	position: absolute;
+.form_title{
+	letter-spacing: 0.5em;
   top: 14%;
-  padding-left: 230px;
   font-size: 25px;
-  color: rgb(7, 187, 4);
+  color: rgb(0, 0, 205);
+	margin-bottom: 50px;
 }
 
-.form__item{
+.form_item{
 	margin-bottom: 45px;
 	text-align: left;
 }
 
-.form__item > label{
+.form_item > label{
 	display: block;
 	margin-bottom: 15px;
 	font-weight: bold;
-	color: rgb(7, 187, 4);
+	color: rgb(0, 0, 205);
 }
 
-.form__item > input[type="text"], .form__item > input[type="password"]{
-	width: 100%;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+.form_item > input[type="text"], .form__item > input[type="password"]{
+	width: 80%;
 	line-height: 40px;
 }
 
-.form__item > input[type="submit"]{
-	width: 100%;
+.form_item > input[type="submit"]{
+	width: 80%;
 }
+
 .error-message{
 	color: red;
 	font-size: 16px;

@@ -14,10 +14,10 @@
     INSERT INTO sauna
         (name, sauna_temp, sauna_time, sauna_satisfaction, water_temp, water_time, water_satisfaction, created_at)
     VALUES
-        (#{name}, #{saunaTemp}, #{saunaTime}, #{saunaSatisfaction}, #{waterTemp}, #{waterTime}, #{waterSatisfaction}, CURRENT_TIMESTAMP)
+        (#{name}, #{sauna_temp}, #{sauna_time}, #{sauna_satisfaction}, #{water_temp}, #{water_time}, #{water_satisfaction}, CURRENT_TIMESTAMP)
   </insert>
   <update id="update">
-    UPDATE sauna SET name = #{name}, sauna_temp = #{saunaTemp}, sauna_time = #{saunaTime}, sauna_satisfaction = #{saunaSatisfaction}, water_temp = #{waterTemp}, water_time = #{waterTime}, water_satisfaction = #{waterSatisfaction} WHERE id = #{id}
+    UPDATE sauna SET name = #{name}, sauna_temp = #{sauna_temp}, sauna_time = #{sauna_time}, sauna_satisfaction = #{sauna_satisfaction}, water_temp = #{water_temp}, water_time = #{water_time}, water_satisfaction = #{water_satisfaction} WHERE id = #{id}
   </update>
 
   <delete id="delete">

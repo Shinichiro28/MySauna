@@ -13,18 +13,18 @@ public class SaunaAddRequest implements Serializable {
   private String name;
 
   @NotNull(message = "サウナ室の温度を入力して下さい")
-  private Integer sauna_temp;
+  private Integer saunaTemp;
 
-  private Integer sauna_time;
+  private Integer saunaTime;
 
   @NotNull(message = "サウナの満足度を入力して下さい")
-  private Integer sauna_satisfaction;
+  private Integer saunaSatisfaction;
 
   @NotNull(message = "水風呂の温度を入力して下さい")
-  private Integer water_temp;
+  private Integer waterTemp;
 
-  private Integer water_time;
+  private Integer waterTime;
 
   @NotNull(message = "水風呂の満足度を入力して下さい")
-  private Integer water_satisfaction;
+  private Integer waterSatisfaction;
 }

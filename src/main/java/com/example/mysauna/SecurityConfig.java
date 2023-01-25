@@ -27,7 +27,7 @@ public class SecurityConfig {
         // ログイン成功後のリダイレクト先URl
         .defaultSuccessUrl("/sauna/index")
         // ログイン失敗後のリダイレクト先URL
-        .failureUrl("/login?error")
+        .failureUrl("/user/login?error")
         // ログアウトの設定開始
         .permitAll()).logout(logout -> logout
             .logoutUrl("/user/logout")
@@ -35,10 +35,10 @@ public class SecurityConfig {
             .logoutSuccessUrl("/user/login"))
         // URL毎の認可設定開始
         .authorizeHttpRequests(authz -> authz
-            .mvcMatchers("user/new").permitAll()
+            .mvcMatchers("/sauna/new", "/sauna/create", "/sauna/index").permitAll()
+            .mvcMatchers("/user/new").permitAll()
             .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
             .permitAll()
-            // cssなどはログインなしでもアクセス可能
             .anyRequest().authenticated());
     return http.build();
   }
