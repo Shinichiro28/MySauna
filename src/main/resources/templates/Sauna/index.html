@@ -58,6 +58,10 @@
           for(var i = 0; i < saunaTemp.length; i++){
             saunaTempArray.push(saunaTemp[i]);
           }
+          //saunaTempArrayの重複削除
+          let notDuplicSaunaTempArray = saunaTempArray.filter(function (x, i, self){
+            return self.indexOf(x) === i;
+          });
 
           //sauna_satisfactionの配列
           let saunaSatisfactionArray = [];
@@ -76,7 +80,7 @@
             });
           };
           var barChartData = {
-            labels: saunaTempArray,
+            labels: notDuplicSaunaTempArray,
             datasets: [
               {
                 type: 'bar',
