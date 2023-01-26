@@ -10,14 +10,14 @@ import com.example.mysauna.entity.User;
 @Service
 public class UserNewService {
   @Autowired
-  private static PasswordEncoder passwordEncoder;
+  private PasswordEncoder passwordEncoder;
 
   @Autowired
-  private static UserRepository userRepository;
+  private UserRepository userRepository;
 
-  public static void userNew(String username, String password) {
+  public void userNew(String username, String password) {
     // パスワードハッシュ化
     String hashedPassword = passwordEncoder.encode(password);
-    userRepository.saveAndFlush(new User(username, hashedPassword));
+    userRepository.saveAndFlush(new User(username, hashedPassword, "GENERAL"));
   }
 }

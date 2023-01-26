@@ -2,9 +2,10 @@
 <html xmlns="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
-    <title>Sauna</title>
+    <title>MySauna</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script type="text/javascript" src="static/js/sauna.js"></script>
     <link th:href="@{/css/index.css}" rel="stylesheet">
   </head>
   <body>
@@ -34,7 +35,7 @@
               <td th:text="*{name}"></td>
               <td th:text="*{saunaTemp}"></td>
               <td th:text="*{saunaSatisfaction}"></td>
-              <td th:text="*{waterTemp}"></td>
+              <td th:text="*{waterTemp}">℃</td>
               <td th:text="*{waterSatisfaction}"></td>
               <td>
                   <a th:href="@{/sauna/{id}/edit(id=*{id})}" class="btn btn-primary">編集</a>
@@ -47,7 +48,10 @@
       <div class="m-5">
         <h2 id="graph">グラフ</h2>
         <h3 class="mt-5">サウナ室温度別の満足度</h3>
-        <canvas id="canvas"></canvas>
+        <canvas id="saunaTemp"></canvas>
+        <h3>水風呂温度別の満足度</h3>
+        <canvas id="waterTemp"></canvas>
+
         <script type="text/javascript" th:inline="javascript">
           const saunalist = /*[[${saunalist}]]*/"saunalist";
 
@@ -58,10 +62,6 @@
           for(var i = 0; i < saunaTemp.length; i++){
             saunaTempArray.push(saunaTemp[i]);
           }
-          //saunaTempArrayの重複削除
-          let notDuplicSaunaTempArray = saunaTempArray.filter(function (x, i, self){
-            return self.indexOf(x) === i;
-          });
 
           //sauna_satisfactionの配列
           let saunaSatisfactionArray = [];
@@ -71,8 +71,110 @@
             saunaSatisfactionArray.push(saunaSatisfaction[i]);
           }
 
+          let doubleArray = [];
+          /*for(var i = 0; i < saunaTemp.length; i++){
+            doubleArray.push([saunaTemp[i], saunaSatisfaction[i]]);
+          }*/
+          if(i=0){
+            doubleArray.push([saunaTemp[i], saunaSatisfaction[i]]);
+          }
+          document.write(doubleArray);
+
+
+          //water_tempの配列
+          let waterTempArray = [];
+          //water_tempデータの準備
+          const waterTemp = saunalist.map(x=>x.waterTemp);
+          for(var i = 0; i < waterTemp.length; i++){
+            waterTempArray.push(waterTemp[i]);
+          }
+
+          //water_satisfactionの配列
+          let waterSatisfactionArray = [];
+          //water_satisfactionデータの準備
+          const waterSatisfaction = saunalist.map(x=>x.waterSatisfaction);
+          for(var i = 0; i < waterSatisfaction.length; i++){
+            waterSatisfactionArray.push(waterSatisfaction[i]);
+          }
+
+          //水風呂満足度グラフ
           window.onload = function(){
-            ctx = document.getElementById("canvas").getContext('2d');
+            ctx2 = document.getElementById("waterTemp").getContext('2d');
+            window.myBar = new Chart(ctx2, {
+              type: 'bar',
+              data: barChartData2,
+              options: complexChartOption2
+            });
+          };
+          var barChartData2 = {
+            labels: waterTempArray,
+            datasets: [
+              {
+                type: 'bar',
+                label: "満足度(%)",
+                data: waterSatisfactionArray,
+                backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(255, 159, 64, 0.2)',
+                  'rgba(255, 205, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(242, 87, 87, 0.9)',
+                  'rgba(153,242,87,0.9)',
+                  'rgba(87, 138, 242, 0.9)',
+                  'rgba(242,231,87,0.9)'
+                  ],
+                  borderColor: [
+                  'rgb(255, 99, 132)',
+                  'rgb(255, 159, 64)',
+                  'rgb(255, 205, 86)',
+                  'rgb(75, 192, 192)',
+                  'rgb(54, 162, 235)',
+                  'rgb(153, 102, 255)',
+                  'rgba(242, 87, 87, 0.9)',
+                  'rgba(87, 138, 242, 0.9)',
+                  'rgba(242,231,87,0.9)'
+                  ],
+                  yAxisID: "y-axis-1",
+                  borderWidth: 1,
+                    lineTension: 0,
+                    fill: false,
+              },
+            ],
+          };
+          var complexChartOption2 = {
+            responsive: true,
+            scales: {
+              yAxes: [{
+                id: "y-axis-1",
+                type: "linear",
+                position: "right",
+                scaleLabel: {             //軸ラベル設定
+                  display: true,           //表示設定
+                  labelString: '満足度(％)',  //ラベル
+                },
+                ticks: {
+                  min: 0,
+                  stepSize: 10
+                },
+                gridLines: {
+                  drawOnChartArea: false,
+                },
+              }],
+              xAxes: [{                         //x軸設定
+                    display: true,                //表示設定
+                    scaleLabel: {                 //軸ラベル設定
+                       display: true,             //表示設定
+                       labelString: '水風呂温度(℃)',  //ラベル
+                    },
+                }],
+            }
+          };
+
+          //サウナ室温度満足度
+          window.onload = function(){
+            ctx = document.getElementById("saunaTemp").getContext('2d');
             window.myBar = new Chart(ctx, {
               type: 'bar',
               data: barChartData,
@@ -80,11 +182,11 @@
             });
           };
           var barChartData = {
-            labels: notDuplicSaunaTempArray,
+            labels: saunaTempArray,
             datasets: [
               {
                 type: 'bar',
-                label: "満足度",
+                label: "満足度(%)",
                 data: saunaSatisfactionArray,
                 backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
@@ -109,7 +211,7 @@
                   'rgba(87, 138, 242, 0.9)',
                   'rgba(242,231,87,0.9)'
                   ],
-                  yAxisID: "y-axis-2",
+                  yAxisID: "y-axis-1",
                   borderWidth: 1,
                     lineTension: 0,
                     fill: false,
@@ -122,23 +224,26 @@
               yAxes: [{
                 id: "y-axis-1",
                 type: "linear",
-                position: "left",
+                position: "right",
+                scaleLabel: {             //軸ラベル設定
+                  display: true,           //表示設定
+                  labelString: '満足度(％)',  //ラベル
+                },
                 ticks: {
                   min: 0,
-                  stepSize: 1
-                },
-              }, {
-                id: "y-axis-2",
-                type: "linear",
-                position: "right",
-                ticks: {
-                  min: 60,
                   stepSize: 10
                 },
                 gridLines: {
                   drawOnChartArea: false,
                 },
               }],
+              xAxes: [{                         //x軸設定
+                    display: true,                //表示設定
+                    scaleLabel: {                 //軸ラベル設定
+                       display: true,             //表示設定
+                       labelString: 'サウナ室温度(℃)',  //ラベル
+                    },
+                }],
             }
           };
         </script>

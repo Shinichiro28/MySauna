@@ -29,7 +29,7 @@ public class UserController {
     if (result.hasErrors()) {
       return "user/newUser";
     }
-    UserNewService.userNew(form.getUsername(), form.getPassword());
+    userNewService.userNew(form.getUsername(), form.getPassword());
     return "redirect:/user/login";
   }
 

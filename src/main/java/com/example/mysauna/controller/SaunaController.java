@@ -78,12 +78,12 @@ public class SaunaController {
     SaunaUpdateRequest saunaUpdateRequest = new SaunaUpdateRequest();
     saunaUpdateRequest.setId(sauna.getId());
     saunaUpdateRequest.setName(sauna.getName());
-    saunaUpdateRequest.setSaunaTemp(sauna.getSaunaTemp());
-    saunaUpdateRequest.setSaunaTime(sauna.getSaunaTime());
-    saunaUpdateRequest.setSaunaSatisfaction(sauna.getSaunaSatisfaction());
-    saunaUpdateRequest.setWaterTemp(sauna.getWaterTemp());
-    saunaUpdateRequest.setWaterTime(sauna.getWaterTime());
-    saunaUpdateRequest.setWaterSatisfaction(sauna.getWaterSatisfaction());
+    saunaUpdateRequest.setSauna_temp(sauna.getSaunaTemp());
+    saunaUpdateRequest.setSauna_time(sauna.getSaunaTime());
+    saunaUpdateRequest.setSauna_satisfaction(sauna.getSaunaSatisfaction());
+    saunaUpdateRequest.setWater_temp(sauna.getWaterTemp());
+    saunaUpdateRequest.setWater_time(sauna.getWaterTime());
+    saunaUpdateRequest.setWater_satisfaction(sauna.getWaterSatisfaction());
     model.addAttribute("saunaUpdateRequest", saunaUpdateRequest);
     return "sauna/edit";
   }

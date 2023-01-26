@@ -21,13 +21,17 @@ public class User {
   @Column(name = "password")
   private String password;
 
+  @Column(name = "rolename")
+  private String rolename;
+
   public User() {
 
   }
 
-  public User(String username, String password) {
+  public User(String username, String password, String rolename) {
     this.username = username;
     this.password = password;
+    this.rolename = rolename;
   }
 
   public Integer getId() {
@@ -52,5 +56,13 @@ public class User {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  public String getRolename() {
+    return rolename;
+  }
+
+  public void setRolename(String rolename) {
+    this.rolename = rolename;
   }
 }

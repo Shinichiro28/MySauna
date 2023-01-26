@@ -16,6 +16,11 @@ public class UserDetailsImpl implements UserDetails {
   }
 
   @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return AuthorityUtils.createAuthorityList("ROLE_" + this.user.getRolename());
+  }
+
+  @Override
   public String getPassword() {
     return user.getPassword();
   }
@@ -43,11 +48,5 @@ public class UserDetailsImpl implements UserDetails {
   @Override
   public boolean isEnabled() {
     return true;
-  }
-
-  @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    //
-    return null;
   }
 }

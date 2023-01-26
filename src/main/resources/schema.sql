@@ -12,7 +12,9 @@ CREATE TABLE IF NOT EXISTS sauna(
 );
 
 CREATE TABLE IF NOT EXISTS users(
-  id SERIAL PRIMARY KEY,
+  id BIGINT NOT NULL AUTO_INCREMENT,
   username VARCHAR(20),
-  password VARCHAR(60)
+  password VARCHAR(60),
+  rolename VARCHAR(10),
+  PRIMARY KEY(id)
 );

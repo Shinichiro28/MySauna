@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>ユーザー登録</title>
+    <title>MySauna</title>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link th:href="@{/css/newUser.css}" rel="stylesheet">
@@ -19,7 +19,7 @@
         <p class="form_item">
           <label for="password">パスワード</label>
           <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-message"></span>
-          <input type="password" name="password" id="password" placeholder="8文字以上12文字以下">
+          <input type="password" name="password" id="password" placeholder="8文字以上20文字以下">
         </p>
         <p class="form_item">
           <label for="confirm-password">パスワード(確認)</label>
