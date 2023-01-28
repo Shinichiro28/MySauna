@@ -10,6 +10,7 @@
   </head>
   <body>
     <div class="container">
+
       <!-- 一覧画面 -->
       <h1>サ活内容一覧</h1>
       <div class="float-end">
@@ -47,16 +48,13 @@
       </div>
       <div class="m-5">
         <h2 id="graph">グラフ</h2>
-        <h3 class="mt-5">サウナ室温度別の満足度</h3>
-        <canvas id="saunaTemp"></canvas>
-        <h3>水風呂温度別の満足度</h3>
-        <canvas id="waterTemp"></canvas>
+        <canvas id="saunaChart" class="mt-5"></canvas>
+        <canvas id="waterChart" class="mt-5"></canvas>
 
         <script type="text/javascript" th:inline="javascript">
           const saunalist = /*[[${saunalist}]]*/"saunalist";
-
-          //sauna_tempの配列
-          let saunaTempArray = [];
+                     //sauna_tempの配列
+                     let saunaTempArray = [];
           //sauna_tempデータの準備
           const saunaTemp = saunalist.map(x=>x.saunaTemp);
           for(var i = 0; i < saunaTemp.length; i++){
@@ -70,18 +68,17 @@
           for(var i = 0; i < saunaSatisfaction.length; i++){
             saunaSatisfactionArray.push(saunaSatisfaction[i]);
           }
+            //サウナ多次元連想配列 x: saunaTempArray, y: saunaSatisfactionArray
+            var saunaData = [];
+            for(var i = 0; i < saunaTempArray.length; i++){
+                 var data_tmp = {};
+                 data_tmp.x = saunaTempArray[i];
+                 data_tmp.y = saunaSatisfactionArray[i];
+                 saunaData.push(data_tmp);
+            }
 
-          let doubleArray = [];
-          /*for(var i = 0; i < saunaTemp.length; i++){
-            doubleArray.push([saunaTemp[i], saunaSatisfaction[i]]);
-          }*/
-          if(i=0){
-            doubleArray.push([saunaTemp[i], saunaSatisfaction[i]]);
-          }
-          document.write(doubleArray);
 
-
-          //water_tempの配列
+           //water_tempの配列
           let waterTempArray = [];
           //water_tempデータの準備
           const waterTemp = saunalist.map(x=>x.waterTemp);
@@ -96,156 +93,81 @@
           for(var i = 0; i < waterSatisfaction.length; i++){
             waterSatisfactionArray.push(waterSatisfaction[i]);
           }
-
-          //水風呂満足度グラフ
-          window.onload = function(){
-            ctx2 = document.getElementById("waterTemp").getContext('2d');
-            window.myBar = new Chart(ctx2, {
-              type: 'bar',
-              data: barChartData2,
-              options: complexChartOption2
-            });
-          };
-          var barChartData2 = {
-            labels: waterTempArray,
-            datasets: [
-              {
-                type: 'bar',
-                label: "満足度(%)",
-                data: waterSatisfactionArray,
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(255, 159, 64, 0.2)',
-                  'rgba(255, 205, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(242, 87, 87, 0.9)',
-                  'rgba(153,242,87,0.9)',
-                  'rgba(87, 138, 242, 0.9)',
-                  'rgba(242,231,87,0.9)'
-                  ],
-                  borderColor: [
-                  'rgb(255, 99, 132)',
-                  'rgb(255, 159, 64)',
-                  'rgb(255, 205, 86)',
-                  'rgb(75, 192, 192)',
-                  'rgb(54, 162, 235)',
-                  'rgb(153, 102, 255)',
-                  'rgba(242, 87, 87, 0.9)',
-                  'rgba(87, 138, 242, 0.9)',
-                  'rgba(242,231,87,0.9)'
-                  ],
-                  yAxisID: "y-axis-1",
-                  borderWidth: 1,
-                    lineTension: 0,
-                    fill: false,
-              },
-            ],
-          };
-          var complexChartOption2 = {
-            responsive: true,
-            scales: {
-              yAxes: [{
-                id: "y-axis-1",
-                type: "linear",
-                position: "right",
-                scaleLabel: {             //軸ラベル設定
-                  display: true,           //表示設定
-                  labelString: '満足度(％)',  //ラベル
-                },
-                ticks: {
-                  min: 0,
-                  stepSize: 10
-                },
-                gridLines: {
-                  drawOnChartArea: false,
-                },
-              }],
-              xAxes: [{                         //x軸設定
-                    display: true,                //表示設定
-                    scaleLabel: {                 //軸ラベル設定
-                       display: true,             //表示設定
-                       labelString: '水風呂温度(℃)',  //ラベル
-                    },
-                }],
+            //サウナ多次元連想配列 x: waterTempArray, y: waterSatisfactionArray
+            var waterData = [];
+            for(var i = 0; i < waterTempArray.length; i++){
+                 var data_tmp = {};
+                 data_tmp.x = waterTempArray[i];
+                 data_tmp.y = waterSatisfactionArray[i];
+                 waterData.push(data_tmp);
             }
-          };
 
-          //サウナ室温度満足度
-          window.onload = function(){
-            ctx = document.getElementById("saunaTemp").getContext('2d');
-            window.myBar = new Chart(ctx, {
-              type: 'bar',
-              data: barChartData,
-              options: complexChartOption
-            });
-          };
-          var barChartData = {
-            labels: saunaTempArray,
-            datasets: [
-              {
-                type: 'bar',
-                label: "満足度(%)",
-                data: saunaSatisfactionArray,
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(255, 159, 64, 0.2)',
-                  'rgba(255, 205, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(242, 87, 87, 0.9)',
-                  'rgba(153,242,87,0.9)',
-                  'rgba(87, 138, 242, 0.9)',
-                  'rgba(242,231,87,0.9)'
-                  ],
-                  borderColor: [
-                  'rgb(255, 99, 132)',
-                  'rgb(255, 159, 64)',
-                  'rgb(255, 205, 86)',
-                  'rgb(75, 192, 192)',
-                  'rgb(54, 162, 235)',
-                  'rgb(153, 102, 255)',
-                  'rgba(242, 87, 87, 0.9)',
-                  'rgba(87, 138, 242, 0.9)',
-                  'rgba(242,231,87,0.9)'
-                  ],
-                  yAxisID: "y-axis-1",
-                  borderWidth: 1,
-                    lineTension: 0,
-                    fill: false,
-              },
-            ],
-          };
-          var complexChartOption = {
-            responsive: true,
-            scales: {
-              yAxes: [{
-                id: "y-axis-1",
-                type: "linear",
-                position: "right",
-                scaleLabel: {             //軸ラベル設定
-                  display: true,           //表示設定
-                  labelString: '満足度(％)',  //ラベル
-                },
-                ticks: {
-                  min: 0,
-                  stepSize: 10
-                },
-                gridLines: {
-                  drawOnChartArea: false,
-                },
-              }],
-              xAxes: [{                         //x軸設定
-                    display: true,                //表示設定
-                    scaleLabel: {                 //軸ラベル設定
-                       display: true,             //表示設定
-                       labelString: 'サウナ室温度(℃)',  //ラベル
+        
+             //サウナグラフ
+            var ctx = document.getElementById("saunaChart");
+            var saunaChart = new Chart(ctx, {
+                  type: 'bubble',
+                  data: {
+                      datasets: [{
+                          label: 'サウナ室温度別の満足度',
+                          data: saunaData,
+                          backgroundColor: '#f88',
+                   }],
+                   },
+                   options: {
+                       scales: {
+                        y: {min: 0, max: 100},
+                        x: {min: 60, max: 150},
+                        yAxes: [{
+                          position: "right",
+                          scaleLabel: {             //軸ラベル設定
+                            display: true,           //表示設定
+                            labelString: '満足度(％)',  //ラベル
+                          },
+                        }],
+                        xAxes: [{                         //x軸設定
+                          scaleLabel: {                 //軸ラベル設定
+                            display: true,             //表示設定
+                            labelString: 'サウナ室温度(℃)',  //ラベル
+                          },
+                        }],
+                      },
                     },
-                }],
-            }
-          };
+                  });
+
+             //水風呂グラフ
+            var ctx = document.getElementById("waterChart");
+            var waterChart = new Chart(ctx, {
+                  type: 'bubble',
+                  data: {
+                      datasets: [{
+                          label: '水風呂温度別の満足度',
+                          data: waterData,
+                          backgroundColor: '#48f',
+                        }],
+                      },
+                      options: {
+                        scales: {
+                          y: {min: 0, max: 100},
+                          x: {min: 0, max: 30},
+                          yAxes: [{
+                          position: "right",
+                          scaleLabel: {             //軸ラベル設定
+                            display: true,           //表示設定
+                            labelString: '満足度(％)',  //ラベル
+                          },
+                        }],
+                        xAxes: [{                         //x軸設定
+                          scaleLabel: {                 //軸ラベル設定
+                            display: true,             //表示設定
+                            labelString: '水風呂温度(℃)',  //ラベル
+                          },
+                        }],
+                        },
+                      },
+                    });
+
+
         </script>
       </div>
     </div>

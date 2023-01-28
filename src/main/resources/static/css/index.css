@@ -1,5 +1,5 @@
 /* モーダル画面 */
-/* 
+
 .c-overlay {
   position: fixed;
   top: 0;
@@ -10,16 +10,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
-.c-overlay__inner {
+.c-overlay_inner {
   box-sizing: border-box;
-  position: absolute;
+  z-index: 100;
   max-width: 640px;
   width: 100%;
   padding: 24px 24px;
   background-color: #fff;
-}*/
+}
 
 /* モダール画面をとじる */
 /* 
