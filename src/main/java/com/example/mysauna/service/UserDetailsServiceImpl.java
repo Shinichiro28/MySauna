@@ -10,12 +10,15 @@ import com.example.mysauna.UserDetailsImpl;
 import com.example.mysauna.dao.UserRepository;
 import com.example.mysauna.entity.User;
 
+//ユーザー情報を取得する
+//UserDetailsService：ユーザー情報を取得する為のインターフェース
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
   @Autowired
   private UserRepository userRepository;
 
+  // loadUserByUsername(String username)：ユーザー名をキーにユーザー情報を取得
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     User user = userRepository.findByUsername(username);
