@@ -14,7 +14,7 @@
       <!-- 一覧画面 -->
       <h1>サ活内容一覧</h1>
       <div class="float-end">
-          <a th:href="@{/sauna/new}" class="btn btn-primary">登録はこちら</a>
+          <a th:href="@{'/'+${user.user_id}+'/sauna/new'}" class="btn btn-primary">登録はこちら</a>
       </div>
       <form th:action="@{/user/logout}" method="post" class="btn btn-link">
         <button class="btn btn-outline-dark">ログアウト</button>

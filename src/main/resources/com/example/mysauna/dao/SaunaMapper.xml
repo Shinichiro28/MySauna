@@ -12,9 +12,9 @@
   </select>
   <insert id="save">
     INSERT INTO sauna
-        (name, sauna_temp, sauna_time, sauna_satisfaction, water_temp, water_time, water_satisfaction, created_at)
+        (user_id, name, sauna_temp, sauna_time, sauna_satisfaction, water_temp, water_time, water_satisfaction, created_at)
     VALUES
-        (#{name}, #{sauna_temp}, #{sauna_time}, #{sauna_satisfaction}, #{water_temp}, #{water_time}, #{water_satisfaction}, CURRENT_TIMESTAMP)
+        (#{user_id}, #{name}, #{sauna_temp}, #{sauna_time}, #{sauna_satisfaction}, #{water_temp}, #{water_time}, #{water_satisfaction}, CURRENT_TIMESTAMP)
   </insert>
   <update id="update">
     UPDATE sauna SET name = #{name}, sauna_temp = #{sauna_temp}, sauna_time = #{sauna_time}, sauna_satisfaction = #{sauna_satisfaction}, water_temp = #{water_temp}, water_time = #{water_time}, water_satisfaction = #{water_satisfaction} WHERE id = #{id}

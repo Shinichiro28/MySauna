@@ -15,6 +15,8 @@ public class SaunaUpdateRequest implements Serializable {
   @NotNull
   private Long id;
 
+  private Long user_id;
+
   @NotEmpty(message = "施設名を入れてください")
   private String name;
 

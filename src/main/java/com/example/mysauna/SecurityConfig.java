@@ -35,9 +35,6 @@ public class SecurityConfig {
             .logoutSuccessUrl("/user/login"))
         // URL毎の認可設定開始
         .authorizeHttpRequests(authz -> authz
-            .mvcMatchers("/sauna/new", "/sauna/create", "/sauna/index", "/sauna/{id}/edit", "/sauna/update",
-                "/sauna/{id}/delete")
-            .permitAll()
             .mvcMatchers("/user/new").permitAll()
             .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
             .permitAll()

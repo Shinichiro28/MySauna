@@ -9,6 +9,8 @@ import lombok.Data;
 @Data
 public class SaunaAddRequest implements Serializable {
 
+  private Long user_id;
+
   @NotEmpty(message = "施設名を入れてください")
   private String name;
 

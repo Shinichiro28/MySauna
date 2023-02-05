@@ -27,7 +27,7 @@ public class SaunaController {
   private SaunaService saunaService;
 
   // リスト一覧表示
-  @GetMapping("/sauna/index")
+  @GetMapping("/{userId}/sauna/index")
   public String index(Model model) {
     // SaunaPostの全レコードを取得
     List<Sauna> saunaList = saunaService.findAll();
@@ -37,7 +37,7 @@ public class SaunaController {
   }
 
   // 登録画面を表示
-  @GetMapping("sauna/new")
+  @GetMapping("/{userId}/sauna/new")
   public String displayAdd(Model model) {
     // 登録情報をモデルにセット
     model.addAttribute("saunaAddRequest", new SaunaAddRequest());
@@ -45,7 +45,7 @@ public class SaunaController {
   }
 
   // 登録する
-  @RequestMapping(value = "/sauna/create", method = RequestMethod.POST)
+  @RequestMapping(value = "/{userId}/sauna/create", method = RequestMethod.POST)
   public String create(@Validated @ModelAttribute SaunaAddRequest saunaAddRequest, BindingResult result,
       Model model) {
     if (result.hasErrors()) {
@@ -64,7 +64,7 @@ public class SaunaController {
   }
 
   // 編集画面表示
-  @GetMapping("/sauna/{id}/edit")
+  @GetMapping("/{userId}/sauna/{id}/edit")
   public String displayEdit(@PathVariable Long id, Model model) {
     Sauna sauna = saunaService.findById(id);
     SaunaUpdateRequest saunaUpdateRequest = new SaunaUpdateRequest();
@@ -81,7 +81,7 @@ public class SaunaController {
   }
 
   // 編集する
-  @RequestMapping(value = "/sauna/update", method = RequestMethod.POST)
+  @RequestMapping(value = "/{userId}//sauna/update", method = RequestMethod.POST)
   public String update(@Validated @ModelAttribute SaunaUpdateRequest saunaUpdateRequest, BindingResult result,
       Model model) {
     if (result.hasErrors()) {
@@ -97,7 +97,7 @@ public class SaunaController {
   }
 
   // 削除する
-  @GetMapping("/sauna/{id}/delete")
+  @GetMapping("/{userId}/sauna/{id}/delete")
   public String delete(@PathVariable Long id, Model model) {
     saunaService.delete(id);
     return "redirect:/sauna/index";
