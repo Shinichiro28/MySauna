@@ -14,3 +14,12 @@
 - サウナビュー投稿機能
 - サウナビュー編集機能
 - サウナビュー削除機能
+
+## 技術スタック
+
+- OS：Mac
+- 言語：Java(17.0.5), MySQL, JavaScript, HTML, CSS
+- フレームワーク：Spring Boot 2.7.6, BootStrap
+- Jsライブラリ：Chart
+- IDE：Visual Studio Code
+
